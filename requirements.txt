@@ -1,0 +1,64 @@
+## =========================================
+## 开源版默认依赖（核心功能：控制 + 视觉）
+## =========================================
+numpy<2.0.0
+opencv-contrib-python==4.10.0.84  # OpenCV计算机视觉库（包含 CSRT 跟踪器）
+# opencv-python==4.10.0.84        # 基础版本（不包含跟踪器）
+
+# 目标检测/推理引擎（YOLOv8 ONNX 推理）
+onnxruntime>=1.18.0
+
+# 配置文件解析（项目内含 *.yaml 配置）
+PyYAML>=6.0
+
+# 串口通信（OmniCAN/UCP）
+pyserial>=3.5
+
+# 数学/姿态（部分核心模块可能依赖；保守保留）
+pyglm==2.8.2
+
+
+## =========================================
+## 可选依赖（开源版默认不装：按需取消注释）
+## =========================================
+
+# --- 可视化/调试 ---
+# 用途示例：example/ai_sdk_examples/depth_estimation_examples.py
+matplotlib>=3.5.0
+
+# --- Joy-Con 手柄控制（仅在使用手柄控制相关示例/功能时需要） ---
+# 用途示例：
+# - example/control_sdk_examples/joycon_control_example.py
+# - example/developer_tools/joycon_sensor_display.py
+# - example/test_joycon_arm_control.py / example/test_joycon_display.py
+joycon-python==0.2.4
+hidapi
+
+# --- AI / 云端大模型 / 语音（仅在使用 AI_SDK 示例时需要） ---
+# 用途示例：example/ai_sdk_examples/*.py（LLM/ASR/TTS/多模态/智能对话等）
+requests>=2.25.0
+aiohttp>=3.8.0
+websocket-client>=1.6.0
+websockets==15.0.1
+openai>=1.0.0
+dashscope>=1.14.0
+pydantic>=2.0.0
+python-dotenv>=1.0.0
+typing-extensions>=4.0.0
+# 说明：部分语音示例会在运行时导入 pyaudio（例如麦克风/流式识别）
+pyaudio>=0.2.11
+# 在Windows上安装pyaudio可能需要：pip install pipwin && pipwin install pyaudio
+# 在Linux上可能需要：sudo apt-get install portaudio19-dev python3-pyaudio
+# 在macOS上可能需要：brew install portaudio && pip install pyaudio
+
+# --- 桌面 GUI（仅在你有 PyQt5 界面程序时需要；开源版默认不装） ---
+PyQt5==5.15.5
+PyQt5-Qt5==5.15.2
+PyQt5_sip==12.15.0
+
+# --- MuJoCo 数字孪生/仿真（仅在运行 DigitalTwinSDK / 仿真示例时需要） ---
+# 用途示例：
+# - example/control_sdk_examples/digital_twin_example.py
+# - example/mujoco_control.py
+# - example/developer_tools/mujoco_slider_viewer.py
+mujoco>=2.3.0
